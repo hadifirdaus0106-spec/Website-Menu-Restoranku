@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PolBel Resto Site</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Font keren untuk ikon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigasi Bar -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-brand">
+          <h1>Menu Hidangan 🍽️</h1>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="#home">Awalan</a></li>
+          <li><a href="#menu">Daftar</a></li>
+          <li><a href="#about">Informasi</a></li>
+          <li><a href="#contact">Kontak</a></li>
+        </ul>
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Seksi Masuk -->
+    <section id="home" class="hero">
+      <div class="container">
+        <h2>Selamat Datang Pengunjung!</h2>
+        <p>Nikmati Hidangannya Nanti!</p>
+        <button class="btn btn-primary" onclick="scrollToMenu()">
+          Buka Menu
+        </button>
+      </div>
+    </section>
+
+    <!-- Filter Daftar -->
+    <section class="menu-filters">
+      <div class="container">
+        <h2>Jenis Hidangan</h2>
+        <div class="filter-buttons">
+          <button class="filter-btn active" onclick="filterMenu('all', event)">
+            Semuanya
+          </button>
+          <button class="filter-btn" onclick="filterMenu('makanan', event)">
+            Makanan
+          </button>
+          <button class="filter-btn" onclick="filterMenu('minuman', event)">
+            Minuman
+          </button>
+          <button class="filter-btn" onclick="filterMenu('dessert', event)">
+            Dessert
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Daftar Menu -->
+    <section id="menu" class="menu-section">
+      <div class="container">
+        <h2 class="section-title">Daftar Hidangan</h2>
+        <div class="search-box">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Mencari Hidangan..."
+            onkeyup="searchMenu()"
+          />
+          <i class="fas fa-search"></i>
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+          <!-- Menu item digenerate oleh Javascript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Keranjang Belanja -->
+    <div class="cart-toggle" onclick="toggleCart()">
+      <i class="fas fa-shopping-cart"></i>
+      <span class="cart-count">0</span>
+      <span>Keranjang</span>
+    </div>
+    
+    <div class="cart-sidebar" id="cartSidebar">
+      <div class="cart-header">
+        <h3>Pesanan Anda</h3>
+        <button class="close-cart" onclick="toggleCart()">&times;</button>
+      </div>
+      <div class="cart-items" id="cartItems">
+        <div class="empty-cart">
+          <i class="fas fa-shopping-cart"></i>
+          <p>Keranjang masih kosong</p>
+          <p>Silakan pilih menu favorit Anda!</p>
+        </div>
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total:</span>
+          <span class="total-price" id="cartTotal">Rp 0</span>
+        </div>
+        <button class="btn btn-primary checkout-btn" onclick="checkout()">
+          <i class="fas fa-check"></i> Pesan Sekarang
+        </button>
+        <button class="btn clear-cart-btn" onclick="clearCart()">
+          <i class="fas fa-trash"></i> Kosongkan Keranjang
+        </button>
+      </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="cart-overlay" onclick="toggleCart()"></div>
+
+    <!-- Notifikasi -->
+    <div class="notification" id="notification"></div>
+
+    <!-- Tentang Seksi -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <h2>Informasi</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil
+              temporibus suscipit voluptate, saepe quia similique perspiciatis
+              eum, explicabo id dolorem eius hic repudiandae tempore
+              reprehenderit rerum eos, et voluptatum repellendus.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
+              labore provident dolorum temporibus accusamus alias molestiae quis
+            </p>
+          </div>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-number">20+</span>
+              <span class="stat-label"> Daftar Hidangan</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">24/7</span>
+              <span class="stat-label">Website</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number">A</span>
+              <span class="stat-label">Penilaian</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- seksi kontak -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <h2>Kontak Lanjut</h2>
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>Jl.Air serkuk, Tanjungpandan</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <p>+62 819-9010-1270</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <p>hadifirdaus0106@gmail.com</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-clock"></i>
+            <p>Buka Senin-Jumat : 16.00 - 20.00</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footers -->
+    <footer class="footer">
+      <div class="container">
+        <p><i><b>Media Sosial</b></i></p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-whatsapp"></i> 081990101270</a>
+          <a href="https://www.instagram.com/hd.tpi.blur"><i class="fab fa-instagram"></i> @hd.tpi.blur</a>
+          <a href="https://facebook.com/profile.php?id=100081470139162"><i class="fab fa-facebook"></i> CathPelauge</a>
+          <a href="https://www.youtube.com/@Kazikiiz"><i class="fab fa-youtube"></i> @Kazikiari</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

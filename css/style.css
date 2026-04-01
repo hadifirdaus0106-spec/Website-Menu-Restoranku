@@ -763,3 +763,405 @@ body {
     gap: 15px;
   }
 }
+
+/* Tambahan style untuk fitur baru - tambahkan di akhir file style.css */
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1002;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 80vh;
+  overflow-y: auto;
+  animation: slideUp 0.3s ease;
+}
+
+.modal-header {
+  background: linear-gradient(135deg, #f32929 0%, #f19e03 100%);
+  padding: 20px;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 0.3s;
+}
+
+.modal-close:hover {
+  transform: scale(1.1);
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  padding: 20px;
+  border-top: 1px solid #eee;
+  background-color: #f9f9f9;
+  border-radius: 0 0 20px 20px;
+}
+
+/* Promo Card */
+.promo-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: linear-gradient(135deg, #fff5e6 0%, #fff0e0 100%);
+  border-radius: 15px;
+  margin-bottom: 15px;
+  border-left: 4px solid #f32929;
+  transition: transform 0.3s;
+}
+
+.promo-card:hover {
+  transform: translateX(5px);
+}
+
+.promo-icon {
+  font-size: 2.5rem;
+}
+
+.promo-info h4 {
+  margin: 0 0 5px 0;
+  color: #333;
+  font-size: 1rem;
+}
+
+.promo-info p {
+  margin: 0;
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.promo-info strong {
+  color: #f32929;
+}
+
+/* Cart Summary */
+.cart-summary {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #eee;
+}
+
+.cart-tax, .cart-grand-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+.cart-grand-total {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #f32929;
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px dashed #ddd;
+}
+
+.cart-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.save-cart-btn {
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.save-cart-btn:hover {
+  background-color: #ff1493;
+  transform: translateY(-2px);
+}
+
+/* Favorite Items */
+.favorite-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+  transition: background-color 0.3s;
+}
+
+.favorite-item:hover {
+  background-color: #f9f9f9;
+}
+
+.favorite-info {
+  flex: 1;
+}
+
+.favorite-info h4 {
+  margin: 0 0 5px 0;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.favorite-info p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.favorite-price {
+  color: #f32929;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.favorite-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.favorite-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: transform 0.3s;
+}
+
+.favorite-actions button:hover {
+  transform: scale(1.1);
+}
+
+.add-favorite {
+  color: #28a745;
+}
+
+.remove-favorite {
+  color: #dc3545;
+}
+
+/* Checkout Modal */
+.checkout-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+.checkout-summary {
+  background: linear-gradient(135deg, #fff5e6 0%, #fff0e0 100%);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.checkout-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.checkout-total {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #f32929;
+  border-top: 1px solid #ddd;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.promo-input {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.promo-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+.promo-input button {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #f32929 0%, #f19e03 100%);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.promo-feedback {
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+.promo-feedback.success {
+  color: #28a745;
+}
+
+.promo-feedback.error {
+  color: #dc3545;
+}
+
+/* Quantity Control Enhancement */
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.quantity-btn {
+  background-color: #f0f0f0;
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-btn:hover {
+  background: linear-gradient(135deg, #f32929 0%, #f19e03 100%);
+  color: white;
+}
+
+.quantity-value {
+  font-weight: bold;
+  min-width: 25px;
+  text-align: center;
+}
+
+.remove-item {
+  color: #999;
+  cursor: pointer;
+  margin-left: 5px;
+  transition: color 0.3s;
+}
+
+.remove-item:hover {
+  color: #f32929;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.cart-toggle {
+  animation: pulse 2s infinite;
+}
+
+/* Scrollbar Styling */
+.modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #f32929 0%, #f19e03 100%);
+  border-radius: 10px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+  background: #f32929;
+}
+
+/* Responsive untuk modal */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    margin: 20px;
+  }
+  
+  .checkout-actions {
+    flex-direction: column;
+  }
+  
+  .checkout-actions button {
+    width: 100%;
+  }
+  
+  .promo-input {
+    flex-direction: column;
+  }
+}

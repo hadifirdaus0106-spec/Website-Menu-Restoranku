@@ -23,6 +23,7 @@
           <li><a href="#menu">Daftar</a></li>
           <li><a href="#about">Informasi</a></li>
           <li><a href="#contact">Kontak</a></li>
+          <li><a href="#" onclick="openPromoModal()">🎉 Promo</a></li>
         </ul>
         <div class="hamburger">
           <span></span>
@@ -36,9 +37,9 @@
     <section id="home" class="hero">
       <div class="container">
         <h2>Selamat Datang Pengunjung!</h2>
-        <p>Nikmati Hidangannya Nanti!</p>
+        <p>Hidangan nikmatnya Menanti!</p>
         <button class="btn btn-primary" onclick="scrollToMenu()">
-          Buka Menu
+          Lihat Menu
         </button>
       </div>
     </section>
@@ -90,30 +91,47 @@
       <span class="cart-count">0</span>
       <span>Keranjang</span>
     </div>
-    
+
     <div class="cart-sidebar" id="cartSidebar">
       <div class="cart-header">
-        <h3>Pesanan Anda</h3>
+        <h3>Pesanan Anda <span id="cartItemCount"></span></h3>
         <button class="close-cart" onclick="toggleCart()">&times;</button>
       </div>
       <div class="cart-items" id="cartItems">
         <div class="empty-cart">
           <i class="fas fa-shopping-cart"></i>
           <p>Keranjang masih kosong</p>
-          <p>Silakan pilih menu favorit Anda!</p>
+          <p>
+            Silakan masukan hidangan yang anda mau kedalam keranjang pesanan!
+          </p>
         </div>
       </div>
       <div class="cart-footer">
-        <div class="cart-total">
-          <span>Total:</span>
-          <span class="total-price" id="cartTotal">Rp 0</span>
+        <div class="cart-summary">
+          <div class="cart-total">
+            <span>Subtotal:</span>
+            <span class="total-price" id="cartTotal">Rp 0</span>
+          </div>
+          <div class="cart-tax">
+            <span>PPN (10%):</span>
+            <span id="cartTax">Rp 0</span>
+          </div>
+          <div class="cart-grand-total">
+            <span>Total:</span>
+            <span id="cartGrandTotal">Rp 0</span>
+          </div>
         </div>
-        <button class="btn btn-primary checkout-btn" onclick="checkout()">
-          <i class="fas fa-check"></i> Pesan Sekarang
-        </button>
-        <button class="btn clear-cart-btn" onclick="clearCart()">
-          <i class="fas fa-trash"></i> Kosongkan Keranjang
-        </button>
+        <div class="cart-actions">
+          <button class="btn btn-primary checkout-btn" onclick="checkout()">
+            <i class="fas fa-check"></i> Pesan Sekarang
+          </button>
+          <button class="btn clear-cart-btn" onclick="clearCart()">
+            <i class="fas fa-trash"></i> Kosongkan Keranjang
+          </button>
+          <button class="btn save-cart-btn" onclick="saveCartAsFavorite()">
+            <i class="fas fa-heart"></i> Simpan Favorit
+          </button>
+        </div>
       </div>
     </div>
 
@@ -123,6 +141,84 @@
     <!-- Notifikasi -->
     <div class="notification" id="notification"></div>
 
+    <!-- Modal Promo -->
+    <div id="promoModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fas fa-gift"></i> Promo Spesial Hari Ini!</h3>
+          <button class="modal-close" onclick="closePromoModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="promo-card">
+            <div class="promo-icon">🎉</div>
+            <div class="promo-info">
+              <h4>Diskon 20% untuk Pembelian di atas Rp 100.000!</h4>
+              <p>Gunakan kode: <strong>POLBEL20</strong> saat checkout</p>
+            </div>
+          </div>
+          <div class="promo-card">
+            <div class="promo-icon">🍕</div>
+            <div class="promo-info">
+              <h4>Beli 2 Gratis 1 untuk semua menu Makanan!</h4>
+              <p>Minimal pembelian 3 item makanan</p>
+            </div>
+          </div>
+          <div class="promo-card">
+            <div class="promo-icon">🥤</div>
+            <div class="promo-info">
+              <h4>Free Ongkir untuk area Tanjungpandan!</h4>
+              <p>Minimal pembelian Rp 50.000</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" onclick="closePromoModal()">
+            Mengerti
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Favorite -->
+    <div id="favoriteModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fas fa-heart"></i> Pesanan Favorit</h3>
+          <button class="modal-close" onclick="closeFavoriteModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body" id="favoriteList">
+          <p>Belum ada pesanan favorit</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Checkout -->
+    <div id="checkoutModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3><i class="fas fa-receipt"></i> Detail Pesanan</h3>
+          <button class="modal-close" onclick="closeCheckoutModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body" id="checkoutDetails">
+          <!-- Detail pesanan akan diisi oleh JS -->
+        </div>
+        <div class="modal-footer">
+          <div class="checkout-actions">
+            <button class="btn" onclick="closeCheckoutModal()">Batal</button>
+            <button class="btn btn-primary" onclick="confirmCheckout()">
+              <i class="fab fa-whatsapp"></i> Lanjut ke WhatsApp
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Tentang Seksi -->
     <section id="about" class="about-section">
       <div class="container">
@@ -130,14 +226,13 @@
         <div class="about-content">
           <div class="about-text">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil
-              temporibus suscipit voluptate, saepe quia similique perspiciatis
-              eum, explicabo id dolorem eius hic repudiandae tempore
-              reprehenderit rerum eos, et voluptatum repellendus.
+              PolBel Resto adalah restoran yang menyajikan berbagai hidangan
+              lezat dengan cita rasa terbaik. Kami berkomitmen untuk memberikan
+              pengalaman kuliner yang tak terlupakan bagi setiap pelanggan.
             </p>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
-              labore provident dolorum temporibus accusamus alias molestiae quis
+              Dengan bahan-bahan berkualitas dan chef profesional, setiap
+              hidangan yang kami sajikan dibuat dengan penuh cinta dan dedikasi.
             </p>
           </div>
           <div class="about-stats">
@@ -186,12 +281,20 @@
     <!-- Footers -->
     <footer class="footer">
       <div class="container">
-        <p><i><b>Media Sosial</b></i></p>
+        <p>
+          <i><b>Media Sosial</b></i>
+        </p>
         <div class="social-links">
           <a href="#"><i class="fab fa-whatsapp"></i> 081990101270</a>
-          <a href="https://www.instagram.com/hd.tpi.blur"><i class="fab fa-instagram"></i> @hd.tpi.blur</a>
-          <a href="https://facebook.com/profile.php?id=100081470139162"><i class="fab fa-facebook"></i> CathPelauge</a>
-          <a href="https://www.youtube.com/@Kazikiiz"><i class="fab fa-youtube"></i> @Kazikiari</a>
+          <a href="https://www.instagram.com/hd.tpi.blur"
+            ><i class="fab fa-instagram"></i> @hd.tpi.blur</a
+          >
+          <a href="https://facebook.com/profile.php?id=100081470139162"
+            ><i class="fab fa-facebook"></i> CathPelauge</a
+          >
+          <a href="https://www.youtube.com/@Kazikiiz"
+            ><i class="fab fa-youtube"></i> @Kazikiari</a
+          >
         </div>
       </div>
     </footer>
